@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-
-
+from .models import AddBooks
 from datetime import datetime
+
+
+def add_books_view(request):
+    if request.method == 'GET':
+        adds = AddBooks.objects.filter.order_by('-id')
+        return render(request, template_name='added.html', context={'adds': adds})
+
+
+def add_books_detail_view(request, id):
+    if request.method == 'GET':
+        added_id = get_object_or_404(AddBooks, id=id)
+        return render(request, template_name='added_detail.html',
+                      context={'added_id': added_id})
 
 
 def info_view(request):
