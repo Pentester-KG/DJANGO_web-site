@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class AddBooks(models.Model):
@@ -26,3 +27,17 @@ class AddBooks(models.Model):
     class Meta:
         verbose_name = 'книгу'
         verbose_name_plural = 'Список книг'
+
+
+class Review(models.Model):
+    review_book = models.ForeignKey(AddBooks, on_delete=models.CASCADE, related_name='review_book', null=True)
+    stars = models.PositiveIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.review_book} - {self.stars}'
+
+    class Meta:
+        verbose_name = 'отзыв'
+        verbose_name_plural = 'отзывы'

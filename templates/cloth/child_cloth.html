@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+<ol>
+    {% for i in children_clothes %}
+        <li>
+            <p>{{ i.name }}</p>
+            <p>{{ i.price }}</p>
+            {% for j in i.tags.all %}
+                <p>#{{ j.name }}</p>
+            {% endfor %}
+        </li>
+    {% endfor %}
+    <button><a href="">М</a></button>
+    <button><a href="">Ж</a></button>
+    <button><a href="">Д</a></button>
+</ol>
+</center>
+</body>
+</html>

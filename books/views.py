@@ -6,8 +6,8 @@ from datetime import datetime
 
 def add_books_view(request):
     if request.method == 'GET':
-        adds = AddBooks.objects.filter.order_by('-id')
-        return render(request, template_name='added.html', context={'adds': adds})
+        adds = AddBooks.objects.filter().order_by('-id')
+        return render(request, template_name='adds.html', context={'adds': adds})
 
 
 def add_books_detail_view(request, id):
