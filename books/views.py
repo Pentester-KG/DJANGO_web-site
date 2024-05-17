@@ -12,9 +12,9 @@ def add_books_view(request):
 
 def add_books_detail_view(request, id):
     if request.method == 'GET':
-        added_id = get_object_or_404(AddBooks, id=id)
+        books = get_object_or_404(AddBooks, id=id)
         return render(request, template_name='added_detail.html',
-                      context={'added_id': added_id})
+                      context={'books': books})
 
 
 def info_view(request):

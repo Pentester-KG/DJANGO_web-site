@@ -10,7 +10,7 @@ class TagCloth(models.Model):
 
 class Cloth(models.Model):
     name = models.CharField(max_length=100)
-    #photo = models.ImageField(upload_to='images/cloth')
+    photo = models.ImageField(upload_to='media/cloth', null=True, blank=True)
     description = models.TextField(blank=True)
     price = models.PositiveIntegerField(default=100)
     tags = models.ManyToManyField(TagCloth)

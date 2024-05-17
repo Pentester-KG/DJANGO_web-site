@@ -9,8 +9,10 @@
 <ol>
     {% for i in women_clothes %}
         <li>
+            <img src="{{ women_clothes.image.url }}" class="img-thumbnail" alt="" width="300">
             <p>{{ i.name }}</p>
             <p>{{ i.price }}</p>
+             <p>{{ i.description }}</p>
             {% for j in i.tags.all %}
                 <p>#{{ j.name }}</p>
             {% endfor %}

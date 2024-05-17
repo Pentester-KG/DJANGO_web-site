@@ -25,7 +25,7 @@ class AddBooks(models.Model):
     def __str__(self):
         return f'{self.title} - {self.publication}'
     class Meta:
-        verbose_name = 'книгу'
+        verbose_name = 'книги'
         verbose_name_plural = 'Список книг'
 
 

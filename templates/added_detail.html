@@ -1,19 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<img src="{{  added.id.image }}" alt="">
-<h>{{  added.id.title }}</h>
-<p>{{  added.id.description }}</p>
-<audio controls>
-    <source src="{{ added.id.audio_books.url }}">
-</audio>
-<iframe src="{{ added.id.video }} " frameborder="0"></iframe>
-<p>{{  added.id.book_genre }}</p>
-<p>{{ added.id.publication }}</p>
-<p>{{  added.id.author }}</p>
-</body>
-</html>
+{% include 'header.html'%}
+<br>
+<center>
+
+
+<img src="{{ books.image.url }}" class="img-thumbnail" alt="" width="300">
+<br>
+    <br>
+<div class="card" style="width: 30rem;">
+  <div class="card-header">
+    <h1>{{ books.title }}</h1>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Автор: {{ books.author }}</li>
+    <li class="list-group-item">Описание:{{ books.description }}</li>
+    <li class="list-group-item"><b>Цена: {{ books.price }}₽</b> </li>
+    <li class="list-group-item">Жанр: {{ books.book_genre }}</li>
+    <li class="list-group-item">Дата публикации: {{ books.publication }}</li>
+    <li class="list-group-item">Ключевые слова: {{ books.key_words }}</li>
+  </ul>
+</div>
+
+
+<p> </p>
+<p></p>
+
+{% if books.video %}
+    <iframe src="{{ books.video }}" frameborder="0"></iframe>
+{% endif %}
+
+{% if books.audio_book %}
+    {% if books.audio_book.url %}
+        <audio controls>
+            <source src="{{ books.audio_book.url }}">
+        </audio>
+    {% else %}
+        <p>Error: The 'audio_book' attribute has no file associated with it.</p>
+    {% endif %}
+{% endif %}
+
+<br>
+<br>
+
+<table border="1" width="600" cellpadding="5">
+    <tr>
+        <td>Оценка </td>  <td>Отзыв</td> <td>Дата отзыва</td>
+    </tr>
+    {% for i in books_id.review_book.all %}
+    <tr>
+        <td>{{ i.stars }}</td> <td>{{ i.text }}</td> <td>{{ i.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<br>
+<a class="btn btn-primary" href="/books/" role="button">Вернуться назад</a>
+
+</center>
+<br>
+{% include 'footer.html'%}

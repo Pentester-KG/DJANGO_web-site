@@ -5,12 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+ <img src="{{ children_clothes.image.url }}" class="img-thumbnail" alt="" width="300">
 <center>
 <ol>
+
     {% for i in children_clothes %}
         <li>
+
             <p>{{ i.name }}</p>
             <p>{{ i.price }}</p>
+            <p>{{ i.description }}</p>
             {% for j in i.tags.all %}
                 <p>#{{ j.name }}</p>
             {% endfor %}

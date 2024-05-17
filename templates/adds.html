@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Список книг</title>
-</head>
-<body>
-<ul>
-    {% for i in adds %}
-<li>
-    <img src="{{ i.image.url }}" alt="" width="400" height="400">
-    <h1>
-        {{ i.title }}
-    </h1>
-    <p>{{  i.publication }}</p>
-    <button><a href="/books/{{  i.id }}">Подробнее</a></button>
-    <br><br>
-</li>
+{% include "header.html" %}
+{% for i in adds %}
+<br>
+<div class="card" style="width: 18rem;">
+  <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ i.title }}</h5>
+    <p class="card-text">{{  i.publication }}</p>
+     <button><a href="/books/{{ i.id }}">Подробнее</a></button>
+  </div>
+</div>
+<br>
     {% endfor %}
-</ul>
-</body>
-</html>
+{% include 'footer.html' %}
