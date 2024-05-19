@@ -13,9 +13,9 @@ class AddBooks(models.Model):
     )
     title = models.CharField(max_length=100, verbose_name='Укажите название книги')
     author = models.CharField(max_length=100, verbose_name='Введите автора')
-    image = models.ImageField(upload_to='images/', verbose_name='Загрузите фото', null=True)
+    image = models.ImageField(upload_to='media/images/', verbose_name='Загрузите фото', null=True)
     description = models.TextField(verbose_name='Напишите описание книги')
-    audio_book = models.FileField(upload_to='audio_book/', blank=True, verbose_name='Загрузите аудиокнигу', null=True)
+    audio_book = models.FileField(upload_to='audio_book/', verbose_name='Загрузите аудиокнигу', null=True, blank=True)
     video = models.URLField(verbose_name='Укажите видео ссылку', blank=True, null=True)
     book_genre = models.CharField(max_length=100, choices=BOOK_GENRE, verbose_name='Выберите жанр')
     price = models.PositiveIntegerField(verbose_name='Укажите цену')
@@ -41,3 +41,9 @@ class Review(models.Model):
     class Meta:
         verbose_name = 'отзыв'
         verbose_name_plural = 'отзывы'
+
+
+class Comment(models.Model):
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

@@ -40,12 +40,14 @@
 
 <br>
 <br>
-
+    <button><a href="/books/{{  books.id  }}/delete/">Удалить</a></button>
+    <button><a href="/books/{{  books.id  }}/update/">Редактировать</a></button>
+    <button><a href="/create_comment/">Оставить отзыв</a></button>
 <table border="1" width="600" cellpadding="5">
     <tr>
         <td>Оценка </td>  <td>Отзыв</td> <td>Дата отзыва</td>
     </tr>
-    {% for i in books_id.review_book.all %}
+    {% for i in books.review_book.all %}
     <tr>
         <td>{{ i.stars }}</td> <td>{{ i.text }}</td> <td>{{ i.created_at }}</td>
     </tr>
@@ -54,7 +56,7 @@
 
 <br>
 <br>
-<a class="btn btn-primary" href="/books/" role="button">Вернуться назад</a>
+<a class="btn btn-primary" href="/books" role="button">Вернуться назад</a>
 
 </center>
 <br>
