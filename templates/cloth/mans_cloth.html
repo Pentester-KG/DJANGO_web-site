@@ -9,18 +9,22 @@
 <ol>
     {% for i in mans_clothes %}
         <li>
-            <img src="{{ mans_clothes.image.url }}" class="img-thumbnail" alt="" width="300">
-            <p>{{ i.name }}</p>
-            <p>{{ i.price }}</p>
-            <p>{{ i.description }}</p>
-            {% for j in i.tags.all %}
-                <p>#{{ j.name }}</p>
-            {% endfor %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ mans_clothes.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                    <p>{{ i.price }}₽</p>
+                <p class="card-text"> {{ i.description }}</p>
+                     {% for j in i.tags.all %}
+                        <p>#{{ j.name }}</p>
+                     {% endfor %}
+                </div>
+            </div>
         </li>
     {% endfor %}
-    <button><a href="">М</a></button>
-    <button><a href="">Ж</a></button>
-    <button><a href="">Д</a></button>
+    <button><a href="/mans_cloth/">М</a></button>
+    <button><a href="/women_cloth/">Ж</a></button>
+    <button><a href="/child_cloth/">Д</a></button>
 </ol>
 </center>
 </body>

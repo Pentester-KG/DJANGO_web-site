@@ -1,5 +1,11 @@
 {% include "header.html" %}
 <button><a href="/create_book/">Добавить</a></button>
+
+ <div class="container">
+        <form action="{% url 'search' %}" method="GET" class="search-form">
+            <input type="text" type="search" name="q" class="form-control" placeholder="Search">
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </form>
 {% for i in adds %}
 <br>
 
@@ -10,6 +16,7 @@
     <p class="card-text">{{  i.publication }}</p>
      <button><a href="/books/{{ i.id }}">Подробнее</a></button>
   </div>
+
 </div>
 <br>
     {% endfor %}
