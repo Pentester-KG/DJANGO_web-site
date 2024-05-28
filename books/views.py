@@ -63,7 +63,7 @@ class SearchBookView(generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return models.AddBooks.filter(title__icontains=query).order_by('title')
+            return models.AddBooks.objects.filter(title__icontains=query).order_by('title')
         return models.AddBooks.objects.all().order_by('title')
     # def get_queryset(self):
     #     return models.AddBooks.objects.filter(title__icontains=self.request.GET.get('q'))

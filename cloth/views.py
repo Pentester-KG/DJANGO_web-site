@@ -36,11 +36,11 @@ class ChildCloth(generic.ListView):
     def get_queryset(self):
         return models.Cloth.objects.filter(tags__name='Детская одежда').order_by('-id')
 
-class CreateClothView(generic.CreateView):
-    template_name = "books/create_books.html"
-    form_class = forms.BookForm
-    success_url = '/books/'
-
-    def form_valid(self, form):
-        print(form.cleaned_data)
-        return super(CreateBookView, self).form_valid(form=form)
+# class CreateClothView(generic.CreateView):
+#     template_name = "books/create_books.html"
+#     form_class = form
+#     success_url = '/books/'
+#
+#     def form_valid(self, form):
+#         print(form.cleaned_data)
+#         return super(CreateBookView, self).form_valid(form=form)
