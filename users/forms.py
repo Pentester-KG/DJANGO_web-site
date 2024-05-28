@@ -52,6 +52,7 @@ class RegisterUserForm(UserCreationForm):
     habits = forms.CharField(required=True)
     exp_work = forms.IntegerField(required=True)
     age = forms.IntegerField(required=True)
+    birth_date = forms.DateField(required=True)
     gender = forms.ChoiceField(choices=GENDER, required=True)
     married_status = forms.ChoiceField(choices=MARRIED_STATUS, required=True)
 
@@ -69,6 +70,7 @@ class RegisterUserForm(UserCreationForm):
             'age',
             'gender',
             'phone_number',
+            'birth_date',
             'exp_work',
             'education',
             'habits',

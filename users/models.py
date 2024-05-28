@@ -31,12 +31,12 @@ class UserProfile(User):
 def set_experience(sender, instance, created, **kwargs):
     if created:
         print('Сигнал обработан пользователь создан')
-    exp = instance.exp
-    if exp <= 1:
+    exp_work = instance.exp_work
+    if exp_work <= 1:
         instance.experience_work = 'Junior'
-    elif 1 <= exp <= 3:
+    elif 1 <= exp_work <= 3:
         instance.experience_work = 'Middle'
-    elif 3 <= exp <= 25:
+    elif 3 <= exp_work <= 25:
         instance.experience_work = 'Senior'
     else:
         instance.experience_work = "Стаж не определен"

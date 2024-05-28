@@ -12,12 +12,12 @@ class RegisterView(CreateView):
     
     def form_valid(self, form):
         response = super().form_valid(form)
-        exp = form.cleaned_data['exp_work']
-        if exp <= 1:
+        exp_work = form.cleaned_data['exp_work']
+        if exp_work <= 1:
             self.object.experience_work = 'Junior'
-        elif 1 <= exp <= 3:
+        elif 1 <= exp_work <= 3:
             self.object.experience_work = 'Middle'
-        elif 3 <= exp <= 25:
+        elif 3 <= exp_work <= 25:
             self.object.experience_work = 'Senior'
         else:
             self.object.experience_work = 'Стаж не определен'
