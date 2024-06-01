@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% include 'header.html' %}
 <body>
 <h1>Регистрация</h1>
 <form method="POST" enctype="multipart/form-data">
@@ -11,5 +6,5 @@
     {{ form.as_p }}
     <button type="submit">Регистрация</button>
 </form>
-</body>
-</html>
+
+{% include 'footer.html' %}

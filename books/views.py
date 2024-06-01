@@ -10,7 +10,7 @@ class BooksListView(generic.ListView):
     model = models.AddBooks
 
     def get_queryset(self):
-        return self.model.objects.filter().order_by('-id')
+        return self.model.objects.filter().order_by("-id")
 
 
 class BookDetailView(generic.DetailView):
@@ -25,7 +25,7 @@ class BookDetailView(generic.DetailView):
 class CreateBookView(generic.CreateView):
     template_name = "books/create_books.html"
     form_class = forms.BookForm
-    success_url = '/books/'
+    success_url = "/books/"
 
     def form_valid(self, form):
         print(form.cleaned_data)
@@ -34,7 +34,7 @@ class CreateBookView(generic.CreateView):
 
 class DeleteBookView(generic.DeleteView):
     template_name = "books/delete_book.html"
-    success_url = '/books/'
+    success_url = "/books/"
 
     def get_object(self, **kwargs):
         book_id = self.kwargs.get("id")
@@ -44,7 +44,7 @@ class DeleteBookView(generic.DeleteView):
 class EditBookView(generic.UpdateView):
     template_name = "books/edit_book.html"
     form_class = forms.BookForm
-    success_url = '/books/'
+    success_url = "/books/"
 
     def get_object(self, **kwargs):
         book_id = self.kwargs.get("id")
@@ -61,26 +61,21 @@ class SearchBookView(generic.ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        query = self.request.GET.get("q")
         if query:
-            return models.AddBooks.objects.filter(title__icontains=query).order_by('title')
-        return models.AddBooks.objects.all().order_by('title')
-    # def get_queryset(self):
-    #     return models.AddBooks.objects.filter(title__icontains=self.request.GET.get('q'))
-    #
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['q'] = self.request.GET.get('q')
-    #     return context
+            return models.AddBooks.objects.filter(title__icontains=query).order_by(
+                "title"
+            )
+        return models.AddBooks.objects.all().order_by("title")
 
 
 def create_comment_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = forms.CommentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponse('<h1>Ваш комментарий успешно добавлен</h1>')
+            return HttpResponse("<h1>Ваш комментарий успешно добавлен</h1>")
     else:
         form = forms.CommentForm()
 
-    return render(request, 'books/create_comment.html', {'form': form})
+    return render(request, "books/create_comment.html", {"form": form})

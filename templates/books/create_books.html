@@ -1,10 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% include 'header.html' %}
 </head>
 <body>
 <h1>Добавить книгу</h1>
@@ -16,5 +12,4 @@
 
 </form>
 
-</body>
-</html>
+{% include 'footer.html' %}

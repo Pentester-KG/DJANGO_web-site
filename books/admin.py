@@ -4,4 +4,3 @@ from .models import AddBooks, Review
 
 admin.site.register(AddBooks)
 admin.site.register(Review)
-

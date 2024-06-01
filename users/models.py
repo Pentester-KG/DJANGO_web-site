@@ -7,46 +7,40 @@ from django.dispatch import receiver
 
 class UserProfile(User):
     GENDER = (
-        ('Мужской', 'Мужской'),
-        ('Женский', 'Женский'),
+        ("Мужской", "Мужской"),
+        ("Женский", "Женский"),
     )
-    MARRIED_STATUS = (
-        ('Женат(а)', 'Женат(а)'),
-        ('Не женат(а)', 'Не женат(а)')
+    MARRIED_STATUS = (("Женат(а)", "Женат(а)"), ("Не женат(а)", "Не женат(а)"))
+    age = models.PositiveSmallIntegerField(
+        default=18, validators=[MinValueValidator(16), MaxValueValidator(60)]
     )
-    age = models.PositiveSmallIntegerField(default=18, validators=[MinValueValidator(16), MaxValueValidator(60)])
     phone_number = models.CharField(max_length=14, default="+996")
     birth_date = models.DateField(verbose_name="Дата рождения")
     gender = models.CharField(max_length=64, choices=GENDER)
-    exp_work = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(25)])
+    exp_work = models.PositiveIntegerField(
+        default=1, validators=[MinValueValidator(1), MaxValueValidator(25)]
+    )
     experience_work = models.CharField(max_length=100, default="Стаж не определен")
-    married_status = models.CharField(choices=MARRIED_STATUS, default="Не женат/Не замужем", max_length=100)
+    married_status = models.CharField(
+        choices=MARRIED_STATUS, default="Не женат/Не замужем", max_length=100
+    )
     education = models.BooleanField(default=False)
     habits = models.CharField(max_length=200, default=None)
     email1 = models.EmailField(max_length=100)
 
 
-#exp = опыт работы , указывается в годах
+# exp = опыт работы , указывается в годах
 @receiver(post_save, sender=UserProfile)
 def set_experience(sender, instance, created, **kwargs):
     if created:
-        print('Сигнал обработан пользователь создан')
+        print("Сигнал обработан пользователь создан")
     exp_work = instance.exp_work
     if exp_work <= 1:
-        instance.experience_work = 'Junior'
+        instance.experience_work = "Junior"
     elif 1 <= exp_work <= 3:
-        instance.experience_work = 'Middle'
+        instance.experience_work = "Middle"
     elif 3 <= exp_work <= 25:
-        instance.experience_work = 'Senior'
+        instance.experience_work = "Senior"
     else:
         instance.experience_work = "Стаж не определен"
     instance.save()
-
-
-
-
-
-
-
-
-

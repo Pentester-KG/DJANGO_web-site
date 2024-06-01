@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% include 'header.html' %}
 </head>
 <body>
 <center>
@@ -27,13 +23,5 @@
     <button><a href="/child_cloth/">Д</a></button>
 </ol>
 </center>
-</body>
-</html>
-<div class="card" style="width: 18rem;">
-                <img src="{{ women_clothes.image.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">{{ i.name }}</h5>
-                    <p>{{ i.price }}₽</p>
-                <p class="card-text"> {{ i.description }}</p>
-                </div>
-            </div>
+
+{% include 'footer.html' %}
